@@ -1,8 +1,40 @@
 from tabulate import tabulate
 import json
 
-with open("data.json", "r") as f:
-    data = json.load(f)
+def open_file():
+    with open("data.json", "r") as f:
+        data = json.load(f)
+        return data
+
+def last_details():
+    sub_total = total
+    print(f"Subtotal: {round(sub_total, 2)}")
+    tax = round(total * 0.06, 2)
+    print(f"Tax: {tax}")
+    processing_fee = round(data['customers'][j]['processingFee'], 2)
+    print(f'Processing Fee: {processing_fee}')
+    order_total = round(total + processing_fee + tax, 2)
+    print(f'Customer total: {order_total}\n')
+
+def summary_details():
+    print("Summary lines:")
+    print(f"Total Order Processed: {total_customers}")
+    print(f"Total Items Sold: {total_items_sold}")
+    print(f"Total Profit Processed: {round(total_profit_processed, 2)}")
+
+def data_collected():
+    data_collected = {
+            "Item Purchased": name_of_item,
+            "Selling Price": price_of_item,
+            "Quantity": quantity,
+            "Item Cost To Produce": cost_to_produce,
+            "Total Item Profit": total_item_profit,
+            "Total Item Price": round(total_item_price, 2)
+        }
+    
+    return data_collected
+
+data = open_file() 
 
 total_customers = 0
 total_items_sold = 0
@@ -28,32 +60,13 @@ for j in range(len(data['customers'])):
             total_items_sold += quantity
             total_profit_processed += total_item_profit
             
-
-        data_collected = {
-            "Item Purchased": name_of_item,
-            "Selling Price": price_of_item,
-            "Quantity": quantity,
-            "Item Cost To Produce": cost_to_produce,
-            "Total Item Profit": total_item_profit,
-            "Total Item Price": round(total_item_price, 2)
-        }
-
-        table_of_data.append(data_collected)
+        data_from_customers = data_collected()
+        table_of_data.append(data_from_customers)
 
     print(tabulate(table_of_data, headers="keys"))
     print()
     
-    sub_total = total
-    print(f"Subtotal: {round(sub_total, 2)}")
-    tax = round(total * 0.06, 2)
-    print(f"Tax: {tax}")
-    processing_fee = round(data['customers'][j]['processingFee'], 2)
-    print(f'Processing Fee: {processing_fee}')
-    order_total = round(total + processing_fee + tax, 2)
-    print(f'Customer total: {order_total}\n')
     total_customers += 1
+    last_details()
 
-print("Summary lines:")
-print(f"Total Order Processed: {total_customers}")
-print(f"Total Items Sold: {total_items_sold}")
-print(f"Total Profit Processed: {round(total_profit_processed, 2)}")
+summary_details()
