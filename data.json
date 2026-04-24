@@ -1,0 +1,91 @@
+{ 
+
+    "products": [ 
+
+        { 
+
+            "name": "Krabby Patty", 
+
+            "price": 9.99, 
+
+            "costToProduce": 4.35 
+
+        }, 
+
+        { 
+
+            "name": "Jellyfish Net", 
+
+            "price": 19.99, 
+
+            "costToProduce": 9.95 
+
+        }, 
+
+        { 
+
+            "name": "Barnacle Boy Action Figure", 
+
+            "price": 29.99, 
+
+            "costToProduce": 14.75 
+
+        }, 
+
+        { 
+
+            "name": "Golden Spatula", 
+
+            "price": 99.99, 
+
+            "costToProduce": 57.83 
+
+        } 
+
+    ], 
+
+    "customers": [ 
+
+        { 
+
+            "name": "SpongeBob SquarePants", 
+
+            "processingFee": 0, 
+
+            "orders": [10, 0, 2, 0] 
+
+        }, 
+
+        { 
+
+            "name": "Patrick Star", 
+
+            "processingFee": 7.5, 
+
+            "orders": [0, 3, 0, 1] 
+
+        }, 
+
+        { 
+
+            "name": "Sandy Cheeks", 
+
+            "processingFee": 15, 
+
+            "orders": [5, 1, 1, 1] 
+
+        }, 
+
+        { 
+
+            "name": "Squidward Tentacles", 
+
+            "processingFee": 2.5, 
+
+            "orders": [2, 1, 0, 0] 
+
+        } 
+
+    ] 
+
+}
