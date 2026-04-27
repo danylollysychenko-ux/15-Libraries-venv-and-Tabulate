@@ -22,7 +22,7 @@ def summary_details():
     print(f"Total Items Sold: {total_items_sold}")
     print(f"Total Profit Processed: {round(total_profit_processed, 2)}")
 
-def data_collected():
+def data_collected_from_customers():
     data_collected = {
             "Item Purchased": name_of_item,
             "Selling Price": price_of_item,
@@ -54,13 +54,13 @@ for j in range(len(data['customers'])):
         total_item_price = round(quantity * price_of_item, 2)
         total_item_profit = (price_of_item - cost_to_produce) * quantity
 
-        if data["customers"][j]["orders"][i] >= 1:
-            total += round(data["customers"][j]["orders"][i]
-                           * data["products"][i]['price'], 2)
+        if quantity >= 1:
+            total += round(quantity
+                           * price_of_item, 2)
             total_items_sold += quantity
             total_profit_processed += total_item_profit
             
-        data_from_customers = data_collected()
+        data_from_customers = data_collected_from_customers()
         table_of_data.append(data_from_customers)
 
     print(tabulate(table_of_data, headers="keys"))
@@ -70,3 +70,6 @@ for j in range(len(data['customers'])):
     last_details()
 
 summary_details()
+
+if __name__ == "__main__":
+    pass
